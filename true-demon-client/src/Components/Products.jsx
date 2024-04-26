@@ -2,17 +2,18 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import ProductView from "./ProductView";
 import Spinner from "./Spinner";
+import productSampleImage from '../assets/images/ProductImages/Satoru_Gojo.webp';
 
 const Products = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [selectedProduct, setSelectedProduct] = useState(null);
-  const baseURL = "https://fakestoreapi.com/products";
+  const baseURL = "http://localhost:3000/products/";
 
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get(baseURL);
+        const response = await axios.get(baseURL+"getProducts");
         setProducts(response.data);
       } catch (err) {
         console.error("Error occurred", err);
@@ -43,12 +44,12 @@ const Products = () => {
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 bg-gray-950">
         {products.map((product) => (
          <div
-         key={product.id}
+         key={product._id}
          className="bg-white shadow-lg m-3 p-4 border-4 border-red-800 rounded-lg rounded-br-sm transition transform hover:scale-105 hover:border-gray-500 cursor-pointer flex flex-col"
          onClick={() => handleProductClick(product)}
        >
          <img
-           src={product.image}
+           src={productSampleImage}
            alt={product.name}
            className="w-full object-cover mb-4"
            style={{ height: "15rem" }}

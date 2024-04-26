@@ -1,5 +1,6 @@
 //ProductView component
 import React, { useRef, useEffect } from "react";
+import productSampleImage from '../assets/images/ProductImages/AGHORI.webp';
 
 const ProductView = ({ product, setSelectedProduct, componentName }) => {
   const modalRef = useRef(null);
@@ -11,6 +12,7 @@ const ProductView = ({ product, setSelectedProduct, componentName }) => {
     }
   };
 
+  console.log("all details",{ product, setSelectedProduct, componentName });
   useEffect(() => {
     console.log(componentName);
     document.addEventListener("mousedown", handleClickOutside);
@@ -68,7 +70,7 @@ const ProductView = ({ product, setSelectedProduct, componentName }) => {
         <div className="flex">
           <div className="w-1/2 mr-8 relative">
             <img
-              src={product.image}
+              src={productSampleImage}
               alt={product.name}
               className="w-full h-auto object-cover rounded-lg shadow-md transition-transform duration-300"
               style={{ maxHeight: "600px" }}
@@ -108,7 +110,7 @@ const ProductView = ({ product, setSelectedProduct, componentName }) => {
               </p>
               <p className="text-gray-600 mt-2">
                 <span className="font-bold text-gray-700">Sizes: </span>
-                {product.sizes ? product.sizes.join(", ") : "Not available"}
+                {/* {product.sizes ? product.sizes.join(", ") : "Not available"} */}
               </p>
               <p className="text-gray-600 mt-2">
                 <span className="font-bold text-gray-700">Description: </span>
